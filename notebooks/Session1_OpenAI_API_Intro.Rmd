@@ -1,0 +1,97 @@
+---
+title: "Session 1: Introduction to OpenAI API in R"
+output: html_document
+---
+
+# Setup
+
+```{r}
+# Install necessary packages (if needed)
+# install.packages("httr")
+# install.packages("jsonlite")
+# install.packages("dplyr")
+
+library(httr)
+library(jsonlite)
+library(dplyr)
+```
+
+# API Setup
+
+```{r}
+# IMPORTANT: Replace 'your-api-key-here' with your OpenAI API key
+openai_api_key <- "your-api-key-here"
+openai_endpoint <- "https://api.openai.com/v1/chat/completions"
+```
+
+# Example Sandbox Dataset
+
+```{r}
+text_data <- data.frame(
+  id = 1:5,
+  interview_text = c(
+    "I think climate change is the biggest threat to our future.",
+    "Honestly, politicians don't care about the environment.",
+    "Technology might help us solve some climate problems, but I'm not sure.",
+    "Education is key. People need to understand the impact they're having.",
+    "Big companies are responsible for most of the pollution."
+  ),
+  stringsAsFactors = FALSE
+)
+
+print(text_data)
+```
+
+# Basic API Call Function
+
+```{r}
+call_openai <- function(prompt_text) {
+  response <- POST(
+    url = openai_endpoint,
+    add_headers(Authorization = paste("Bearer", openai_api_key)),
+    content_type_json(),
+    body = toJSON(list(
+      model = "gpt-3.5-turbo",
+      messages = list(list(role = "user", content = prompt_text)),
+      temperature = 0
+    ))
+  )
+  result <- content(response, as = "parsed", type = "application/json")
+  return(result$choices[[1]]$message$content)
+}
+```
+
+# Example: Categorise Texts
+
+```{r}
+text_data <- text_data %>%
+  rowwise() %>%
+  mutate(
+    sentiment = call_openai(
+      paste(
+        "Classify the following statement as Positive, Neutral, or Negative regarding environmental issues:\n",
+        interview_text
+      )
+    )
+  )
+
+print(text_data)
+```
+
+# Fake Human-Coded Dataset for Validation
+
+```{r}
+human_coded <- data.frame(
+  id = 1:5,
+  human_sentiment = c(
+    "Positive",
+    "Negative",
+    "Neutral",
+    "Positive",
+    "Negative"
+  ),
+  stringsAsFactors = FALSE
+)
+
+print(human_coded)
+```

@@ -1,0 +1,82 @@
+---
+title: "Session 2: Validation and Evaluation in R"
+output: html_document
+---
+
+# Setup
+
+```{r}
+# Install necessary packages (if needed)
+# install.packages("dplyr")
+# install.packages("yardstick")
+
+library(dplyr)
+library(yardstick)
+```
+
+# Load Data
+
+```{r}
+text_data <- data.frame(
+  id = 1:5,
+  interview_text = c(
+    "I think climate change is the biggest threat to our future.",
+    "Honestly, politicians don't care about the environment.",
+    "Technology might help us solve some climate problems, but I'm not sure.",
+    "Education is key. People need to understand the impact they're having.",
+    "Big companies are responsible for most of the pollution."
+  ),
+  sentiment = c("Positive", "Negative", "Neutral", "Positive", "Negative"),
+  stringsAsFactors = FALSE
+)
+
+human_coded <- data.frame(
+  id = 1:5,
+  human_sentiment = c("Positive", "Negative", "Neutral", "Positive", "Negative"),
+  stringsAsFactors = FALSE
+)
+```
+
+# Merge AI and Human-Coded Labels
+
+```{r}
+merged_data <- text_data %>%
+  left_join(human_coded, by = "id")
+
+print(merged_data)
+```
+
+# Simple Agreement Calculation
+
+```{r}
+merged_data <- merged_data %>%
+  mutate(agree = ifelse(sentiment == human_sentiment, 1, 0))
+
+agreement_rate <- mean(merged_data$agree)
+
+cat("\nSimple Agreement Rate:", round(agreement_rate * 100, 2), "%\n")
+```
+
+# Confusion Matrix
+
+```{r}
+validation_data <- merged_data %>%
+  mutate(
+    sentiment = factor(sentiment, levels = c("Positive", "Neutral", "Negative")),
+    human_sentiment = factor(human_sentiment, levels = c("Positive", "Neutral", "Negative"))
+  )
+
+conf_mat(validation_data, truth = human_sentiment, estimate = sentiment)
+```
+
+# Bonus: Cohen's Kappa
+
+```{r}
+kap <- yardstick::kap(validation_data, truth = human_sentiment, estimate = sentiment)
+print(kap)
+```
+
+# Discussion Questions
+- Where does the model tend to disagree with human coders?
+- Are disagreements random or patterned?
+- How would you revise prompts or methods to improve reliability?
