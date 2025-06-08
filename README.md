@@ -23,4 +23,8 @@ By the end of this workshop, participants will be able to:
 
 Students should have, at least, a basic command of the R programming language to follow the workshop. For those with no experience with R, [this online resource](https://intro2r.com/) offers a good introduction.
 
-Materials will be posted here as they become available.
+### Workshop Materials
+* [Slides]([https://intro2r.com/](https://docs.google.com/presentation/d/1aL9MDwSZcK1vlz7oqTe2ovyvoFqsN18oL2QoiArt_BY/edit?usp=sharing))
+* Activity 1: [Task Description](https://docs.google.com/document/d/1Pu0DTLJsbieRvCI_5RrkZZRwiOqn1KqOlHxkJCwbrro/edit?usp=sharing) & [Annotation Sheet](https://docs.google.com/spreadsheets/d/1YkWL0bWyyO9JyHt-IvTyff2vsLoRYMYOht5gW0KSVrM/edit?usp=sharing)
+* Activity 2: [R Script](https://drive.google.com/file/d/1BzPC5laSsXMS9Vk_dkuE-RfHPPMW86kt/view?usp=sharing) & [Annotated Script](https://drive.google.com/file/d/1GszQJC9tV4zCe77fJFwHzLKIEeOmm_vj/view?usp=sharing)
+* Activity 3: [R Script]() & [Annotated Script]()
