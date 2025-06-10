@@ -28,4 +28,4 @@ Students should have, at least, a basic command of the R programming language to
 * Activity 1: [Task Description](https://docs.google.com/document/d/1Pu0DTLJsbieRvCI_5RrkZZRwiOqn1KqOlHxkJCwbrro/edit?usp=sharing) & [Annotation Sheet](https://docs.google.com/spreadsheets/d/1YkWL0bWyyO9JyHt-IvTyff2vsLoRYMYOht5gW0KSVrM/copy)
 * Activity 2: [R Script](https://drive.google.com/file/d/1BzPC5laSsXMS9Vk_dkuE-RfHPPMW86kt/view?usp=sharing) & [Annotated Script](https://drive.google.com/file/d/1GszQJC9tV4zCe77fJFwHzLKIEeOmm_vj/view?usp=sharing)
 * Activity 3: [R Script](https://drive.google.com/file/d/1mX36wfaH2NkJXyirHLSjlx8eshtPAoNH/view?usp=sharing) & [Annotated Script](https://drive.google.com/file/d/1BPUmEmjR42BkbYb_jgb8VMJxRgV92t_J/view?usp=sharing)
-* Activity 4: [R Script]() & [Annotated Script]()
+* Activity 4: [R Script](https://drive.google.com/file/d/1SAPZhbXxI9MwcBsWu7yQ2r--js359oAy/view?usp=drive_link) & [Annotated Script](https://drive.google.com/file/d/1vojnAhdMJR62dyPxZTRM8HYVERZUeMYN/view?usp=sharing)
